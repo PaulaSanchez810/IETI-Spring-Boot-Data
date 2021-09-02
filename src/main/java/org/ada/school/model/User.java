@@ -39,7 +39,19 @@ public class User
         return id;
     }
 
-    public void update( UserDto userDto )
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void update(UserDto userDto )
     {
         name = userDto.getName();
         lastName = userDto.getLastName();

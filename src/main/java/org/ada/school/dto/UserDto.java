@@ -1,5 +1,8 @@
 package org.ada.school.dto;
 
+import javax.xml.crypto.Data;
+
+
 public class UserDto
 {
     String name;
@@ -26,4 +29,5 @@ public class UserDto
     {
         return lastName;
     }
+
 }

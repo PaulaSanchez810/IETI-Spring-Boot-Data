@@ -5,12 +5,12 @@ import org.ada.school.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class UserServiceHashMap
-    implements UserService
+public class UserServiceHashMap implements UserService
 {
 
     private final HashMap<String, User> usersMap = new HashMap<>();
@@ -46,7 +46,7 @@ public class UserServiceHashMap
     }
 
     @Override
-    public User update( UserDto userDto, String id )
+    public User updateById( UserDto userDto, String id )
     {
         if ( usersMap.containsKey( id ) )
         {
@@ -59,6 +59,30 @@ public class UserServiceHashMap
             return null;
         }
     }
+
+    @Override
+    public List<User> findUsersWithNameOrLastNameLike(String queryText) {
+        List<User> users = new ArrayList<>();
+        for (User user: usersMap.values()){
+            if (user.getName().equals(queryText) || user.getLastName().equals(queryText)){
+                users.add(user);
+            }
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> findUsersCreatedAfter(Date startDate) {
+        List<User> users = new ArrayList<>();
+        for (User user: usersMap.values()){
+            if (user.getCreatedAt().after(startDate)){
+                users.add(user);
+            }
+        }
+        return users;
+        }
+
+
 
 
 }
