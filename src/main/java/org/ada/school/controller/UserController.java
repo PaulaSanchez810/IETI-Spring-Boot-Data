@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -33,6 +34,18 @@ public class UserController
     public ResponseEntity<List<User>> all()
     {
         return ResponseEntity.ok( userService.all() );
+    }
+
+    @GetMapping(value = "/nameOrLastName/{queryText}")
+    public ResponseEntity<Object> nameOrLastName(@PathVariable String queryText)
+    {
+        return ResponseEntity.ok( userService.findUsersWithNameOrLastNameLike(queryText));
+    }
+
+    @GetMapping(value = "/usersCreatedAfter/{startDate}")
+    public ResponseEntity<Object> usersCreatedAfter(@PathVariable Date startDate)
+    {
+        return ResponseEntity.ok( userService.findUsersCreatedAfter(startDate));
     }
 
     @GetMapping( "/{id}" )
@@ -59,5 +72,7 @@ public class UserController
     {
         return ResponseEntity.ok( userService.deleteById( id ) );
     }
+
+
 
 }

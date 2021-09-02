@@ -2,19 +2,16 @@ package org.ada.school.service;
 
 import org.ada.school.dto.UserDto;
 import org.ada.school.model.User;
-import org.graalvm.compiler.lir.LIRInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
-import repository.UserDocument;
+import org.springframework.stereotype.Component;
 import repository.UserRepository;
-
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collector;
 
 //@Service
+//@Component
 public class UserServiceMongoDB implements UserService
 {
 
@@ -67,6 +64,18 @@ public class UserServiceMongoDB implements UserService
             return user;
         }
         return null;
+
+    }
+
+    @Override
+    public List<User> findUsersWithNameOrLastNameLike(String queryText) {
+        return userRepository.findUsersWithNameOrLastNameLike(queryText);
+
+    }
+
+    @Override
+    public List<User> findUsersCreatedAfter(Date startDate) {
+        return userRepository.findUsersCreatedAfter(startDate);
 
     }
 }

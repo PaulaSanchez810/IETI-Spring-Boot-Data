@@ -5,6 +5,7 @@ import org.ada.school.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,6 +59,30 @@ public class UserServiceHashMap implements UserService
             return null;
         }
     }
+
+    @Override
+    public List<User> findUsersWithNameOrLastNameLike(String queryText) {
+        List<User> users = new ArrayList<>();
+        for (User user: usersMap.values()){
+            if (user.getName().equals(queryText) || user.getLastName().equals(queryText)){
+                users.add(user);
+            }
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> findUsersCreatedAfter(Date startDate) {
+        List<User> users = new ArrayList<>();
+        for (User user: usersMap.values()){
+            if (user.getCreatedAt().after(startDate)){
+                users.add(user);
+            }
+        }
+        return users;
+        }
+
+
 
 
 }
