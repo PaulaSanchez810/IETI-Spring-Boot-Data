@@ -1,10 +1,12 @@
 package repository;
 
+import org.ada.school.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Document
 public class UserDocument
@@ -21,8 +23,9 @@ public class UserDocument
 
     Date createdAt;
 
-    public UserDocument()
-    {
-    }
+
+
+
+
 }
 

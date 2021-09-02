@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping( "/user" )
+@RequestMapping( "/v1/user" )
 public class UserController
 {
 
@@ -51,7 +51,7 @@ public class UserController
     @PutMapping( "/{id}" )
     public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id )
     {
-        return ResponseEntity.ok( userService.update( userDto, id ) );
+        return ResponseEntity.ok( userService.updateById( userDto, id ) );
     }
 
     @DeleteMapping( "/{id}" )

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService
 {
-    User create( User user );
+    User create(User user );
 
     User findById( String id );
 
@@ -15,5 +15,5 @@ public interface UserService
 
     boolean deleteById( String id );
 
-    User update( UserDto userDto, String id );
+    User updateById( UserDto userDto, String id );
 }

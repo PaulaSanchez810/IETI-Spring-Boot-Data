@@ -9,8 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class UserServiceHashMap
-    implements UserService
+public class UserServiceHashMap implements UserService
 {
 
     private final HashMap<String, User> usersMap = new HashMap<>();
@@ -46,7 +45,7 @@ public class UserServiceHashMap
     }
 
     @Override
-    public User update( UserDto userDto, String id )
+    public User updateById( UserDto userDto, String id )
     {
         if ( usersMap.containsKey( id ) )
         {
